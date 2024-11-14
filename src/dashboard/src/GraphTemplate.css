@@ -1,0 +1,31 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .chart-box {
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    background-color: white;
+  }
+  
+  .chart-box h5 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+  }
+  
+  .chart-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .col-sm-6 {
+      flex: 1;
+      min-width: 300px;
+    }
+  }

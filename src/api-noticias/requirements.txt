@@ -1,0 +1,5 @@
+locust
+flask
+flask_sqlalchemy
+pytest
+requests

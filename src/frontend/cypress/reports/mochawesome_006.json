@@ -1,0 +1,132 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 0,
+    "pending": 0,
+    "failures": 2,
+    "start": "2024-08-30T15:34:00.124Z",
+    "end": "2024-08-30T15:34:10.379Z",
+    "duration": 10255,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "941a4b5e-4890-4609-a88b-37078574c099",
+      "title": "",
+      "fullFile": "cypress\\cypress\\integration\\cadastro.spec.js",
+      "file": "cypress\\cypress\\integration\\cadastro.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "fc7804b5-2b3b-4dc0-8d06-bde7182a1843",
+          "title": "Testes de Cadastro",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve preencher o formulário de cadastro e redirecionar para a tela de login",
+              "fullTitle": "Testes de Cadastro Deve preencher o formulário de cadastro e redirecionar para a tela de login",
+              "timedOut": null,
+              "duration": 4356,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#cadastroForm').within(() => {\n  cy.get('#nome').type('João da Silva');\n  cy.get('#dataNascimento').type('2000-01-01');\n  cy.get('#email').type('joao@example.com');\n  cy.get('#senha').type('senhaSegura123');\n  cy.get('input[type=\"submit\"]').click();\n});\n// Verifica se a mensagem de erro está vazia\ncy.get('#mensagemErro').should('be.empty');\n// Verifica se foi redirecionado para a tela de login\ncy.get('#loginContainer').should('not.have.class', 'hidden');\ncy.get('#cadastroContainer').should('have.class', 'hidden');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#cadastroForm`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#cadastroForm`, but never found it.\n    at Context.eval (webpack:///./cypress/cypress/integration/cadastro.spec.js:7:9)",
+                "diff": null
+              },
+              "uuid": "fdd2938e-0b8b-4bf0-921f-d84751658147",
+              "parentUUID": "fc7804b5-2b3b-4dc0-8d06-bde7182a1843",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve mostrar uma mensagem de erro se a idade for menor que 13 anos",
+              "fullTitle": "Testes de Cadastro Deve mostrar uma mensagem de erro se a idade for menor que 13 anos",
+              "timedOut": null,
+              "duration": 4208,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#cadastroForm').within(() => {\n  cy.get('#nome').type('Maria Sousa');\n  cy.get('#dataNascimento').type('2015-01-01');\n  cy.get('#email').type('maria@example.com');\n  cy.get('#senha').type('senhaSegura123');\n  cy.get('input[type=\"submit\"]').click();\n});\n// Verifica se a mensagem de erro correta é exibida\ncy.get('#mensagemErro').should('contain', 'Você deve ter pelo menos 13 anos para se cadastrar.');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#cadastroForm`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#cadastroForm`, but never found it.\n    at Context.eval (webpack:///./cypress/cypress/integration/cadastro.spec.js:24:9)",
+                "diff": null
+              },
+              "uuid": "ddd88737-c132-4cd5-b2f9-ff256ca3e6be",
+              "parentUUID": "fc7804b5-2b3b-4dc0-8d06-bde7182a1843",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "fdd2938e-0b8b-4bf0-921f-d84751658147",
+            "ddd88737-c132-4cd5-b2f9-ff256ca3e6be"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 8564,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

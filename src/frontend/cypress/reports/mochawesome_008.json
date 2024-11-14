@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-08-30T15:34:19.314Z",
+    "end": "2024-08-30T15:34:24.839Z",
+    "duration": 5525,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "04b8a138-8b9a-4607-a05b-79af6c325f7a",
+      "title": "",
+      "fullFile": "cypress\\cypress\\integration\\noticias.spec.js",
+      "file": "cypress\\cypress\\integration\\noticias.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6cb3b88f-2485-493a-99da-cc1cb19da1d6",
+          "title": "Testes de Notícias",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve exibir as notícias mockadas corretamente",
+              "fullTitle": "Testes de Notícias Deve exibir as notícias mockadas corretamente",
+              "timedOut": null,
+              "duration": 4203,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#noticiasContainer').should('not.have.class', 'hidden');\n// Verifica se as notícias mockadas são exibidas\ncy.get('.news-item').should('have.length', 4);\ncy.get('.news-title').first().should('contain', 'Vitória Impressionante');\ncy.get('.news-content').first().should('contain', 'O time conquistou uma vitória impressionante ontem.');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#cadastroContainer`, but never found it.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Testes de Notícias`",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#cadastroContainer`, but never found it.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Testes de Notícias`\n    at Context.eval (webpack:///./cypress/cypress/integration/noticias.spec.js:6:9)",
+                "diff": null
+              },
+              "uuid": "ce6ca61b-3730-486d-9c76-e667996c349d",
+              "parentUUID": "6cb3b88f-2485-493a-99da-cc1cb19da1d6",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "ce6ca61b-3730-486d-9c76-e667996c349d"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 4203,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,5 @@
+Flask
+requests
+psutil
+Flask-Cors
+Flask-SocketIO

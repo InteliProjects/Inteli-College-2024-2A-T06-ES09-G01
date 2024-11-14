@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-08-30T11:42:39.463Z",
+    "end": "2024-08-30T11:42:44.673Z",
+    "duration": 5210,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "50b26ac3-b5e2-48e2-a854-4872e2a81aa5",
+      "title": "",
+      "fullFile": "cypress\\cypress\\integration\\cadastro.spec.js",
+      "file": "cypress\\cypress\\integration\\cadastro.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "84ae19ba-ee94-4e5d-adf9-4d50e491b09a",
+          "title": "Testes de Cadastro",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve preencher o formulário de cadastro e redirecionar para a tela de login",
+              "fullTitle": "Testes de Cadastro Deve preencher o formulário de cadastro e redirecionar para a tela de login",
+              "timedOut": null,
+              "duration": 1708,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#cadastroForm').within(() => {\n  cy.get('#nome').type('João da Silva');\n  cy.get('#dataNascimento').type('2000-01-01');\n  cy.get('#email').type('joao@example.com');\n  cy.get('#senha').type('senhaSegura123');\n  cy.get('input[type=\"submit\"]').click();\n});\n// Verifica se a mensagem de erro está vazia\ncy.get('#mensagemErro').should('be.empty');\n// Verifica se foi redirecionado para a tela de login\ncy.get('#loginContainer').should('not.have.class', 'hidden');\ncy.get('#cadastroContainer').should('have.class', 'hidden');",
+              "err": {},
+              "uuid": "4f2505c5-7326-4f06-99f7-020f3301f571",
+              "parentUUID": "84ae19ba-ee94-4e5d-adf9-4d50e491b09a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve mostrar uma mensagem de erro se a idade for menor que 13 anos",
+              "fullTitle": "Testes de Cadastro Deve mostrar uma mensagem de erro se a idade for menor que 13 anos",
+              "timedOut": null,
+              "duration": 1522,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#cadastroForm').within(() => {\n  cy.get('#nome').type('Maria Sousa');\n  cy.get('#dataNascimento').type('2015-01-01');\n  cy.get('#email').type('maria@example.com');\n  cy.get('#senha').type('senhaSegura123');\n  cy.get('input[type=\"submit\"]').click();\n});\n// Verifica se a mensagem de erro correta é exibida\ncy.get('#mensagemErro').should('contain', 'Você deve ter pelo menos 13 anos para se cadastrar.');",
+              "err": {},
+              "uuid": "52dac886-c338-4e68-9dc9-0e13600ce5d1",
+              "parentUUID": "84ae19ba-ee94-4e5d-adf9-4d50e491b09a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "4f2505c5-7326-4f06-99f7-020f3301f571",
+            "52dac886-c338-4e68-9dc9-0e13600ce5d1"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3230,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

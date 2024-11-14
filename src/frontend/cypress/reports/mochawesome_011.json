@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-08-30T15:37:15.442Z",
+    "end": "2024-08-30T15:37:16.324Z",
+    "duration": 882,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "dfa596d7-fe97-4db3-8c29-717d04d32d85",
+      "title": "",
+      "fullFile": "cypress\\cypress\\integration\\noticias.spec.js",
+      "file": "cypress\\cypress\\integration\\noticias.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e9e2c658-9bd0-4150-a5c8-fbad97c9fddd",
+          "title": "Testes de Notícias",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve exibir as notícias mockadas corretamente",
+              "fullTitle": "Testes de Notícias Deve exibir as notícias mockadas corretamente",
+              "timedOut": null,
+              "duration": 797,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#noticiasContainer').should('not.have.class', 'hidden');\n// Verifica se as notícias mockadas são exibidas\ncy.get('.news-item').should('have.length', 4);\ncy.get('.news-title').first().should('contain', 'Vitória Impressionante');\ncy.get('.news-content').first().should('contain', 'O time conquistou uma vitória impressionante ontem.');",
+              "err": {
+                "message": "CypressError: `cy.visit()` failed trying to load:\n\nhttp://localhost:5500/\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:5500\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Testes de Notícias`",
+                "estack": "CypressError: `cy.visit()` failed trying to load:\n\nhttp://localhost:5500/\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:5500\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Testes de Notícias`\n    at <unknown> (http://localhost:57719/__cypress/runner/cypress_runner.js:131955:74)\n    at visitFailedByErr (http://localhost:57719/__cypress/runner/cypress_runner.js:131354:12)\n    at <unknown> (http://localhost:57719/__cypress/runner/cypress_runner.js:131954:11)\n    at tryCatcher (http://localhost:57719/__cypress/runner/cypress_runner.js:1807:23)\n    at Promise._settlePromiseFromHandler (http://localhost:57719/__cypress/runner/cypress_runner.js:1519:31)\n    at Promise._settlePromise (http://localhost:57719/__cypress/runner/cypress_runner.js:1576:18)\n    at Promise._settlePromise0 (http://localhost:57719/__cypress/runner/cypress_runner.js:1621:10)\n    at Promise._settlePromises (http://localhost:57719/__cypress/runner/cypress_runner.js:1697:18)\n    at _drainQueueStep (http://localhost:57719/__cypress/runner/cypress_runner.js:2407:12)\n    at _drainQueue (http://localhost:57719/__cypress/runner/cypress_runner.js:2400:9)\n    at Async._drainQueues (http://localhost:57719/__cypress/runner/cypress_runner.js:2416:5)\n    at Async.drainQueues (http://localhost:57719/__cypress/runner/cypress_runner.js:2286:14)\nFrom Your Spec Code:\n    at Context.eval (webpack:///./cypress/cypress/integration/noticias.spec.js:3:9)\n\nFrom Node.js Internals:\n  Error: connect ECONNREFUSED 127.0.0.1:5500\n      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1495:16)",
+                "diff": null
+              },
+              "uuid": "787e86ed-d55a-4c49-8bd6-14eb5cfdba44",
+              "parentUUID": "e9e2c658-9bd0-4150-a5c8-fbad97c9fddd",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "787e86ed-d55a-4c49-8bd6-14eb5cfdba44"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 797,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

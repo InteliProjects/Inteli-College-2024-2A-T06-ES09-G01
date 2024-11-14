@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-08-30T11:42:46.440Z",
+    "end": "2024-08-30T11:42:53.079Z",
+    "duration": 6639,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "cd690305-2023-4bb3-b290-e33d1e59edea",
+      "title": "",
+      "fullFile": "cypress\\cypress\\integration\\login.spec.js",
+      "file": "cypress\\cypress\\integration\\login.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c1260d16-6d64-4bad-b892-89f092118697",
+          "title": "Testes de Login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve fazer login com sucesso e redirecionar para a tela de notícias",
+              "fullTitle": "Testes de Login Deve fazer login com sucesso e redirecionar para a tela de notícias",
+              "timedOut": null,
+              "duration": 2600,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#loginForm').within(() => {\n  cy.get('#loginEmail').type('joao@example.com');\n  // Verifica se o campo de senha está habilitado antes de digitar\n  cy.get('#loginSenha').should('not.be.disabled').type('senhaSegura123');\n  cy.get('input[type=\"submit\"]').click();\n});\n// Verifica se foi redirecionado para a tela de notícias\ncy.get('#noticiasContainer').should('not.have.class', 'hidden');\ncy.get('#loginContainer').should('have.class', 'hidden');",
+              "err": {},
+              "uuid": "f903ff7b-4ac6-4953-b186-7ef8432f4ab3",
+              "parentUUID": "c1260d16-6d64-4bad-b892-89f092118697",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve mostrar uma mensagem de erro para credenciais inválidas",
+              "fullTitle": "Testes de Login Deve mostrar uma mensagem de erro para credenciais inválidas",
+              "timedOut": null,
+              "duration": 2544,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#loginForm').within(() => {\n  cy.get('#loginEmail').type('usuarioInvalido@example.com');\n  // Verifica se o campo de senha está habilitado antes de digitar\n  cy.get('#loginSenha').should('not.be.disabled').type('senhaErrada');\n  cy.get('input[type=\"submit\"]').click();\n});\n// Verifica se a mensagem de erro correta é exibida\ncy.get('#loginErro').should('contain', 'Credenciais inválidas. Tente novamente.');\n// Verifica se a tela de login ainda está visível (não redirecionou)\ncy.get('#loginContainer').should('not.have.class', 'hidden');\ncy.get('#noticiasContainer').should('have.class', 'hidden');",
+              "err": {},
+              "uuid": "524d356f-bfc0-4d26-a090-cd86c1e876ff",
+              "parentUUID": "c1260d16-6d64-4bad-b892-89f092118697",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f903ff7b-4ac6-4953-b186-7ef8432f4ab3",
+            "524d356f-bfc0-4d26-a090-cd86c1e876ff"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5144,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

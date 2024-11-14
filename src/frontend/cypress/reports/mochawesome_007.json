@@ -1,0 +1,129 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-08-30T15:34:11.910Z",
+    "end": "2024-08-30T15:34:17.523Z",
+    "duration": 5613,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 1,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "5624feed-d47a-4d11-baa0-1f18cd5e3574",
+      "title": "",
+      "fullFile": "cypress\\cypress\\integration\\login.spec.js",
+      "file": "cypress\\cypress\\integration\\login.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3cea17ab-69f0-4159-981c-55df01514884",
+          "title": "Testes de Login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve fazer login com sucesso e redirecionar para a tela de notícias",
+              "fullTitle": "Testes de Login Deve fazer login com sucesso e redirecionar para a tela de notícias",
+              "timedOut": null,
+              "duration": 4206,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#loginForm').within(() => {\n  cy.get('#loginEmail').type('joao@example.com');\n  // Verifica se o campo de senha está habilitado antes de digitar\n  cy.get('#loginSenha').should('not.be.disabled').type('senhaSegura123');\n  cy.get('input[type=\"submit\"]').click();\n});\n// Verifica se foi redirecionado para a tela de notícias\ncy.get('#noticiasContainer').should('not.have.class', 'hidden');\ncy.get('#loginContainer').should('have.class', 'hidden');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#cadastroForm`, but never found it.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Testes de Login`",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#cadastroForm`, but never found it.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Testes de Login`\n    at Context.eval (webpack:///./cypress/cypress/integration/login.spec.js:6:11)",
+                "diff": null
+              },
+              "uuid": "6e1d3031-fdba-404b-a727-ce069d9fb260",
+              "parentUUID": "3cea17ab-69f0-4159-981c-55df01514884",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve mostrar uma mensagem de erro para credenciais inválidas",
+              "fullTitle": "Testes de Login Deve mostrar uma mensagem de erro para credenciais inválidas",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#loginForm').within(() => {\n  cy.get('#loginEmail').type('usuarioInvalido@example.com');\n  // Verifica se o campo de senha está habilitado antes de digitar\n  cy.get('#loginSenha').should('not.be.disabled').type('senhaErrada');\n  cy.get('input[type=\"submit\"]').click();\n});\n// Verifica se a mensagem de erro correta é exibida\ncy.get('#loginErro').should('contain', 'Credenciais inválidas. Tente novamente.');\n// Verifica se a tela de login ainda está visível (não redirecionou)\ncy.get('#loginContainer').should('not.have.class', 'hidden');\ncy.get('#noticiasContainer').should('have.class', 'hidden');",
+              "err": {},
+              "uuid": "a0aa89d1-3915-47ca-acc9-18c4738c2d3c",
+              "parentUUID": "3cea17ab-69f0-4159-981c-55df01514884",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "6e1d3031-fdba-404b-a727-ce069d9fb260"
+          ],
+          "pending": [],
+          "skipped": [
+            "a0aa89d1-3915-47ca-acc9-18c4738c2d3c"
+          ],
+          "duration": 4206,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

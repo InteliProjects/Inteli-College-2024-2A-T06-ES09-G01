@@ -1,0 +1,129 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-08-30T15:32:14.314Z",
+    "end": "2024-08-30T15:32:15.210Z",
+    "duration": 896,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 1,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "474bc0f7-77a3-4341-95c6-47acf209e909",
+      "title": "",
+      "fullFile": "cypress\\cypress\\integration\\login.spec.js",
+      "file": "cypress\\cypress\\integration\\login.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a3568593-215c-4091-8b68-56d7349189e9",
+          "title": "Testes de Login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve fazer login com sucesso e redirecionar para a tela de notícias",
+              "fullTitle": "Testes de Login Deve fazer login com sucesso e redirecionar para a tela de notícias",
+              "timedOut": null,
+              "duration": 789,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#loginForm').within(() => {\n  cy.get('#loginEmail').type('joao@example.com');\n  // Verifica se o campo de senha está habilitado antes de digitar\n  cy.get('#loginSenha').should('not.be.disabled').type('senhaSegura123');\n  cy.get('input[type=\"submit\"]').click();\n});\n// Verifica se foi redirecionado para a tela de notícias\ncy.get('#noticiasContainer').should('not.have.class', 'hidden');\ncy.get('#loginContainer').should('have.class', 'hidden');",
+              "err": {
+                "message": "CypressError: `cy.visit()` failed trying to load:\n\nhttp://localhost:5500/\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:5500\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Testes de Login`",
+                "estack": "CypressError: `cy.visit()` failed trying to load:\n\nhttp://localhost:5500/\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:5500\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Testes de Login`\n    at <unknown> (http://localhost:57337/__cypress/runner/cypress_runner.js:131955:74)\n    at visitFailedByErr (http://localhost:57337/__cypress/runner/cypress_runner.js:131354:12)\n    at <unknown> (http://localhost:57337/__cypress/runner/cypress_runner.js:131954:11)\n    at tryCatcher (http://localhost:57337/__cypress/runner/cypress_runner.js:1807:23)\n    at Promise._settlePromiseFromHandler (http://localhost:57337/__cypress/runner/cypress_runner.js:1519:31)\n    at Promise._settlePromise (http://localhost:57337/__cypress/runner/cypress_runner.js:1576:18)\n    at Promise._settlePromise0 (http://localhost:57337/__cypress/runner/cypress_runner.js:1621:10)\n    at Promise._settlePromises (http://localhost:57337/__cypress/runner/cypress_runner.js:1697:18)\n    at _drainQueueStep (http://localhost:57337/__cypress/runner/cypress_runner.js:2407:12)\n    at _drainQueue (http://localhost:57337/__cypress/runner/cypress_runner.js:2400:9)\n    at Async._drainQueues (http://localhost:57337/__cypress/runner/cypress_runner.js:2416:5)\n    at Async.drainQueues (http://localhost:57337/__cypress/runner/cypress_runner.js:2286:14)\nFrom Your Spec Code:\n    at Context.eval (webpack:///./cypress/cypress/integration/login.spec.js:3:11)\n\nFrom Node.js Internals:\n  Error: connect ECONNREFUSED 127.0.0.1:5500\n      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1495:16)",
+                "diff": null
+              },
+              "uuid": "4e48233f-fc08-49bb-9bd5-31295f249360",
+              "parentUUID": "a3568593-215c-4091-8b68-56d7349189e9",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve mostrar uma mensagem de erro para credenciais inválidas",
+              "fullTitle": "Testes de Login Deve mostrar uma mensagem de erro para credenciais inválidas",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#loginForm').within(() => {\n  cy.get('#loginEmail').type('usuarioInvalido@example.com');\n  // Verifica se o campo de senha está habilitado antes de digitar\n  cy.get('#loginSenha').should('not.be.disabled').type('senhaErrada');\n  cy.get('input[type=\"submit\"]').click();\n});\n// Verifica se a mensagem de erro correta é exibida\ncy.get('#loginErro').should('contain', 'Credenciais inválidas. Tente novamente.');\n// Verifica se a tela de login ainda está visível (não redirecionou)\ncy.get('#loginContainer').should('not.have.class', 'hidden');\ncy.get('#noticiasContainer').should('have.class', 'hidden');",
+              "err": {},
+              "uuid": "304193f1-ee7c-4bb7-a928-cecf58067a25",
+              "parentUUID": "a3568593-215c-4091-8b68-56d7349189e9",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "4e48233f-fc08-49bb-9bd5-31295f249360"
+          ],
+          "pending": [],
+          "skipped": [
+            "304193f1-ee7c-4bb7-a928-cecf58067a25"
+          ],
+          "duration": 789,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

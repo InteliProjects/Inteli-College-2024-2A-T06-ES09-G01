@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicação de Futebol e Loyalty</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: red;
+            margin-top: -10px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .news-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+
+        .news-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Tela de Cadastro -->
+    <div class="form-container" id="cadastroContainer">
+        <h2>Cadastro</h2>
+        <form id="cadastroForm">
+            <label for="nome">Nome e Sobrenome:</label>
+            <input type="text" id="nome" name="nome" required minlength="2" maxlength="50">
+
+            <label for="dataNascimento">Data de Nascimento:</label>
+            <input type="date" id="dataNascimento" name="dataNascimento" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required minlength="6">
+
+            <input type="submit" value="Cadastrar">
+            <p id="mensagemErro" class="error"></p>
+        </form>
+    </div>
+
+    <!-- Tela de Login -->
+    <div class="form-container hidden" id="loginContainer">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="loginEmail">E-mail:</label>
+            <input type="email" id="loginEmail" name="email" required>
+
+            <label for="loginSenha">Senha:</label>
+            <input type="password" id="loginSenha" name="senha" required>
+
+            <input type="submit" value="Entrar">
+            <p id="loginErro" class="error"></p>
+        </form>
+    </div>
+
+    <!-- Tela de Notícias -->
+    <div class="form-container hidden" id="noticiasContainer">
+        <h2>Notícias do Time</h2>
+        <p>Bem-vindo às últimas notícias do seu time favorito!</p>
+        <div id="newsList"></div>
+    </div>
+
+    <script>
+        let usuariosCadastrados = [];
+        const noticias = [
+            { titulo: "Vitória Impressionante", conteudo: "O time conquistou uma vitória impressionante ontem." },
+            { titulo: "Nova Contratação", conteudo: "O clube anunciou a contratação de um novo jogador." },
+            { titulo: "Treino Aberto", conteudo: "O treino aberto ao público foi um sucesso com muitos torcedores presentes." },
+            { titulo: "Preparação para o Campeonato", conteudo: "O time já está se preparando intensamente para o próximo campeonato." }
+        ];
+
+        document.getElementById('cadastroForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const nome = document.getElementById('nome').value;
+            const dataNascimento = document.getElementById('dataNascimento').value;
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+            const mensagemErro = document.getElementById('mensagemErro');
+
+            mensagemErro.textContent = '';
+
+            const hoje = new Date();
+            const nascimento = new Date(dataNascimento);
+            let idade = hoje.getFullYear() - nascimento.getFullYear();
+            const mes = hoje.getMonth() - nascimento.getMonth();
+
+            if (mes < 0 || (mes === 0 && hoje.getDate() < nascimento.getDate())) {
+                idade--;
+            }
+
+            if (idade < 13) {
+                mensagemErro.textContent = 'Você deve ter pelo menos 13 anos para se cadastrar.';
+                return;
+            }
+
+            const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!regexEmail.test(email)) {
+                mensagemErro.textContent = 'Por favor, insira um e-mail válido.';
+                return;
+            }
+
+            if (senha.length < 6) {
+                mensagemErro.textContent = 'A senha deve ter pelo menos 6 caracteres.';
+                return;
+            }
+
+            usuariosCadastrados.push({ email, senha });
+
+            document.getElementById('cadastroContainer').classList.add('hidden');
+            document.getElementById('loginContainer').classList.remove('hidden');
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const email = document.getElementById('loginEmail').value;
+            const senha = document.getElementById('loginSenha').value;
+            const loginErro = document.getElementById('loginErro');
+
+            loginErro.textContent = '';
+
+            const usuario = usuariosCadastrados.find(user => user.email === email && user.senha === senha);
+
+            if (!usuario) {
+                loginErro.textContent = 'Credenciais inválidas. Tente novamente.';
+                return;
+            }
+
+            document.getElementById('loginContainer').classList.add('hidden');
+            document.getElementById('noticiasContainer').classList.remove('hidden');
+
+            mostrarNoticias();
+        });
+
+        function mostrarNoticias() {
+            const newsList = document.getElementById('newsList');
+            newsList.innerHTML = '';
+
+            noticias.forEach(noticia => {
+                const newsItem = document.createElement('div');
+                newsItem.classList.add('news-item');
+
+                const newsTitle = document.createElement('div');
+                newsTitle.classList.add('news-title');
+                newsTitle.textContent = noticia.titulo;
+
+                const newsContent = document.createElement('div');
+                newsContent.classList.add('news-content');
+                newsContent.textContent = noticia.conteudo;
+
+                newsItem.appendChild(newsTitle);
+                newsItem.appendChild(newsContent);
+                newsList.appendChild(newsItem);
+            });
+        }
+    </script>
+</body>
+
+</html>

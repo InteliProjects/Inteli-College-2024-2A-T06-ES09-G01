@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-08-30T11:42:54.791Z",
+    "end": "2024-08-30T11:42:58.973Z",
+    "duration": 4182,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "2baf3ac2-8f01-4499-99dc-a279a2c0fd2b",
+      "title": "",
+      "fullFile": "cypress\\cypress\\integration\\noticias.spec.js",
+      "file": "cypress\\cypress\\integration\\noticias.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "0701e674-095c-401b-9f76-86c1df4a2df0",
+          "title": "Testes de Notícias",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve exibir as notícias mockadas corretamente",
+              "fullTitle": "Testes de Notícias Deve exibir as notícias mockadas corretamente",
+              "timedOut": null,
+              "duration": 2695,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#noticiasContainer').should('not.have.class', 'hidden');\n// Verifica se as notícias mockadas são exibidas\ncy.get('.news-item').should('have.length', 4);\ncy.get('.news-title').first().should('contain', 'Vitória Impressionante');\ncy.get('.news-content').first().should('contain', 'O time conquistou uma vitória impressionante ontem.');",
+              "err": {},
+              "uuid": "391a59d1-af16-428b-9a75-b4648bff906d",
+              "parentUUID": "0701e674-095c-401b-9f76-86c1df4a2df0",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "391a59d1-af16-428b-9a75-b4648bff906d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2695,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
